@@ -1,0 +1,30 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TopBarsWPFClient"
+        xmlns:WPFClient="clr-namespace:TopBars.WPFClient" x:Class="TopBarsWPFClient.MainWindow"
+        mc:Ignorable="d"
+        Title="Top Bars" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <WPFClient:TopBarsViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <ComboBox  Name="cboAllMenus" SelectedItem="{Binding SelectedMenu}" ItemsSource="{Binding AllMenus}" DisplayMemberPath="Name"/>
+       <DataGrid CanUserAddRows="True"  ItemsSource="{Binding SelectedMenu.items}" RowEditEnding="DataGrid_RowEditEnding"/>
+
+            <!--<WrapPanel>
+                <Label>Title</Label>
+                <TextBox Width="150" Text="{Binding NewMenuItem.Title}"></TextBox>
+                <Label>Price</Label>
+                <TextBox Width="50" Text="{Binding NewMenuItem.Price}"></TextBox>
+            </WrapPanel>
+            <Label>Description</Label>
+            <TextBox Height="50" Text="{Binding NewMenuItem.Description}"></TextBox>-->
+            
+            <Button Width="150" Click="Button_Click">Save New Item</Button>
+        </StackPanel>
+    </Grid>
+</Window>
